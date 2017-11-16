@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!-- Backbone demo.
+	1. This is a product details page.
+	2. The customer has selected a dress to buy.
+	3. Customer launches this page that has following details -
+		i) Product image - this can be anything. Please keep it family friendly.
+		ii) Size
+		iii Color
+		iV) Quantity
+	4. You can use any selection method. Doesn't have to be dropdown.
+		If you keep this as dropdown selection, that is fine.
+	5. When selection of attributes is done, customer should enter shipping address.
+	6. When user clicks on finish button, show the summary of the selected data.
+
+	Expected libraries:
+	1. Backbone
+	2. Marionette (Optional) - not required, but nice to have.
+	3. Handlebars (Optional) - not required, but nice to have.
+	4. jQuery (Optional) - not required, but nice to have.
+	5. CSS - any library of your choice.
+
+	Expected:
+	1. Validations.
+	2. View management
+	3. Data management
+	4. Should be able to explain design decisions.
+-->
+
+
+<h1>This is Backbone Demo.</h1>
+<div class="conatainer" id="container">
+  <!-- Add a product component with image of your choice -->
+  Product : Nice dress for all ocassions !
+
+  <br>
+  <br>
+
+  <select id="facets">
+    <option value="Size">Size</option>
+    <option value="Color">Color</option>
+    <option value="Quantity">Quantity</option>
+  </select>
+</div>
+
+<div id="size-selection" hidden>
+  Size selection dialog
+  <form>
+    <input type="radio" name="sizes" value="2S" checked> Small
+    <br>
+    <input type="radio" name="sizes" value="3M"> Medium
+    <br>
+    <input type="radio" name="sizes" value="4L"> large
+  </form>
+</div>
+
+<div id="color-selection" hidden>
+  Color selection dialog
+</div>
+<div id="quantity-selection" hidden>
+  Quantity selection dialog
+</div>
+
+<button id="next"> Next </button>
+<div id=shipaddress hidden>
+  <h2>
+    Shipping Address
+  </h2>
+  <div>
+    <label>AddressOne</label>
+    <input type="text" required="required" name="address1" id="addOne" autofocus/>
+  </div>
+  <div>
+    <label>AddressTwo</label>
+    <input type="text" name="address2" id="addTwo" autofocus/>
+  </div>
+  <div>
+    <label>City</label>
+    <input type="text" name="city" id="city" autofocus/>
+  </div>
+  <div>
+    <label>State</label>
+    <input type="text" name="state" id="state" autofocus/>
+  </div>
+  <div>
+    <label>ZipCode</label>
+    <input type="number" name="zipcode" id="zipcode" autofocus/>
+  </div>
+  <div>
+    <button type="button" id="finish">Finish</button>
+  </div>
+</div>
+
+<br>
+<br>
+<div id=analyticsinfo hidden>
+  Selected product:
+  <br> {Product information}
+  <br>
+  <br> Will be shipped to :
+  <br> {Shipping information}
+</div>
+
+
+</body>
+</html>
