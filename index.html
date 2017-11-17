@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
   <script src="scripts/productView.js"></script>
   <script src="scripts/main.js"></script>
 
-  <title>Title</title>
+  <title>Product Details</title>
 </head>
 <body>
 
@@ -72,15 +73,16 @@
     <h3>Colors</h3>
     <form>
       {{#each colorChoices}}
-      <input type="radio" name="sizes" value={{this}} checked> {{this}}       {{/each}}
+      <input type="radio" name="sizes" value={{this}} {{#if @first}}checked{{/if}}> {{this}}
+      {{/each}}
     </form>
   </div>
 
   <div id="quantity-selection">
     <h3>Quantity</h3>
     <form>
-      {{#timesQuantity 5}}
-        <input type="radio" name="sizes" value={{this}} checked> {{this}}
+      {{#timesQuantity quantityMax}}
+          <input type="radio" name="sizes" value={{this}}> {{this}}
       {{/timesQuantity}}
     </form>
   </div>
@@ -89,7 +91,8 @@
     <h3>Sizes</h3>
     <form>
       {{#each sizeChoices}}
-    <input type="radio" name="sizes" value={{value}} checked> {{text}}       {{/each}}
+    <input type="radio" name="sizes" value={{value}} {{#if @first}}checked{{/if}}> {{text}}
+      {{/each}}
     </form>
   </div>
 
