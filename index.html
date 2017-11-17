@@ -73,7 +73,7 @@
     <h3>Colors</h3>
     <form>
       {{#each colorChoices}}
-      <input type="radio" name="sizes" value={{this}} {{#if @first}}checked{{/if}}> {{this}}
+      <input type="radio" name="colors" value={{this}} {{#if @first}}checked{{/if}}> {{this}}
       {{/each}}
     </form>
   </div>
@@ -82,7 +82,7 @@
     <h3>Quantity</h3>
     <form>
       {{#timesQuantity quantityMax}}
-          <input type="radio" name="sizes" value={{this}}> {{this}}
+          <input type="radio" name="quantity" value={{this}}> {{this}}
       {{/timesQuantity}}
     </form>
   </div>
