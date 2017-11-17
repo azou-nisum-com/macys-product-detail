@@ -1,26 +1,32 @@
-$('#size-selection').show();
+$(document).ready(function(){
+  var product = new app.Product();
+  var productView = new app.ProductView({model: product});
 
-$('#facets').on('change', function() {
+  $('body').append(productView.render().$el);
 
-  $('#size-selection').hide();
-  $('#color-selection').hide();
-  $('#quantity-selection').hide();
+  $('#size-selection').show();
 
-  if (this.value == 'Size') {
-    $('#size-selection').show();
-  } else if (this.value == 'Color') {
-    $('#color-selection').show();
-  } else {
-    $('#quantity-selection').show();
-  }
-})
+  $('#facets').on('change', function() {
 
-$('#next').on('click', function() {
-  $('#shipaddress').show();
-})
+    $('#size-selection').hide();
+    $('#color-selection').hide();
+    $('#quantity-selection').hide();
 
-$('#finish').on('click', function() {
-  $('#analyticsinfo').show();
-  // Display the information picked up above.
-})
+    if (this.value == 'Size') {
+      $('#size-selection').show();
+    } else if (this.value == 'Color') {
+      $('#color-selection').show();
+    } else {
+      $('#quantity-selection').show();
+    }
+  });
 
+  $('#next').on('click', function() {
+    $('#shipaddress').show();
+  });
+
+  $('#finish').on('click', function() {
+    $('#analyticsinfo').show();
+    // Display the information picked up above.
+  });
+});

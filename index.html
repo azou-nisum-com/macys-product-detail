@@ -2,6 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/main.css">
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+  <script src="bower_components/handlebars/handlebars.js"></script>
+
+  <script src="scripts/handlebars-helpers/helpers.js"></script>
+
+  <script src="scripts/product-details/productDetails.js"></script>
+  <script src="scripts/address/address.js"></script>
+  <script src="scripts/analytics/analytics.js"></script>
+  <script src="scripts/product.js"></script>
+  <script src="scripts/product-details/productDetailsView.js"></script>
+  <script src="scripts/address/addressView.js"></script>
+  <script src="scripts/analytics/analyticsView.js"></script>
+  <script src="scripts/productView.js"></script>
+  <script src="scripts/main.js"></script>
+
   <title>Title</title>
 </head>
 <body>
@@ -34,79 +53,86 @@
 -->
 
 
-<h1>This is Backbone Demo.</h1>
-<div class="conatainer" id="container">
-  <!-- Add a product component with image of your choice -->
-  Product : Nice dress for all ocassions !
+<div class="container" id="container"></div>
 
-  <br>
-  <br>
-
-  <select id="facets">
-    <option value="Size">Size</option>
-    <option value="Color">Color</option>
-    <option value="Quantity">Quantity</option>
-  </select>
-</div>
-
-<div id="size-selection" hidden>
-  Size selection dialog
-  <form>
-    <input type="radio" name="sizes" value="2S" checked> Small
-    <br>
-    <input type="radio" name="sizes" value="3M"> Medium
-    <br>
-    <input type="radio" name="sizes" value="4L"> large
-  </form>
-</div>
-
-<div id="color-selection" hidden>
-  Color selection dialog
-</div>
-<div id="quantity-selection" hidden>
-  Quantity selection dialog
-</div>
-
-<button id="next"> Next </button>
-<div id=shipaddress hidden>
-  <h2>
-    Shipping Address
-  </h2>
-  <div>
-    <label>AddressOne</label>
-    <input type="text" required="required" name="address1" id="addOne" autofocus/>
+<script id="productTemplate" type="text/x-handlebars-template">
+  <div class="container" id="container">
+    <h1>{{title}}</h1>
+    <div id="productDetails"></div>
+    <div id="shipAddress hidden"></div>
+    <div id="analyticsInfo"></div>
   </div>
-  <div>
-    <label>AddressTwo</label>
-    <input type="text" name="address2" id="addTwo" autofocus/>
-  </div>
-  <div>
-    <label>City</label>
-    <input type="text" name="city" id="city" autofocus/>
-  </div>
-  <div>
-    <label>State</label>
-    <input type="text" name="state" id="state" autofocus/>
-  </div>
-  <div>
-    <label>ZipCode</label>
-    <input type="number" name="zipcode" id="zipcode" autofocus/>
-  </div>
-  <div>
-    <button type="button" id="finish">Finish</button>
-  </div>
-</div>
+</script>
 
-<br>
-<br>
-<div id=analyticsinfo hidden>
-  Selected product:
-  <br> {Product information}
-  <br>
-  <br> Will be shipped to :
-  <br> {Shipping information}
-</div>
+<script id="productDetailsTemplate" type="text/x-handlebars-template">
+  <h4>Product: Nice dress for all occasions!</h4>
+  <img alt="This is the image">
 
+  <div id="color-selection">
+    <h3>Colors</h3>
+    <form>
+      {{#each colorChoices}}
+      <input type="radio" name="sizes" value={{this}} checked> {{this}}       {{/each}}
+    </form>
+  </div>
+
+  <div id="quantity-selection">
+    <h3>Quantity</h3>
+    <form>
+      {{#timesQuantity 5}}
+        <input type="radio" name="sizes" value={{this}} checked> {{this}}
+      {{/timesQuantity}}
+    </form>
+  </div>
+
+  <div id="size-selection">
+    <h3>Sizes</h3>
+    <form>
+      {{#each sizeChoices}}
+    <input type="radio" name="sizes" value={{value}} checked> {{text}}       {{/each}}
+    </form>
+  </div>
+
+  <button id="next">Next</button>
+</script>
+
+<script id="addressTemplate" type="text/x-handlebars-template">
+  <div id="shipaddress" class="hidden">
+    <h2>
+      Shipping Address
+    </h2>
+    <div>
+      <label>AddressOne</label>
+      <input type="text" required="required" name="address1" id="addOne" autofocus/>
+    </div>
+    <div>
+      <label>AddressTwo</label>
+      <input type="text" name="address2" id="addTwo" autofocus/>
+    </div>
+    <div>
+      <label>City</label>
+      <input type="text" name="city" id="city" autofocus/>
+    </div>
+    <div>
+      <label>State</label>
+      <input type="text" name="state" id="state" autofocus/>
+    </div>
+    <div>
+      <label>ZipCode</label>
+      <input type="number" name="zipcode" id="zipcode" autofocus/>
+    </div>
+    <div>
+      <button type="button" id="finish">Finish</button>
+    </div>
+  </div>
+</script>
+
+<script id="analyticsTemplate" type="text/x-handlebars-template">
+  <h6>Selected product:</h6>
+  <p>{{productInformation}}</p>
+  <h6> Will be shipped to:</h6>
+  <p>{{shippingInformation}}</p>
+</script>
 
 </body>
 </html>
