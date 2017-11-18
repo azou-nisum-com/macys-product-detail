@@ -5,13 +5,9 @@ app.ProductDetails = Backbone.Model.extend({
     // color: '',
     colorChoices: [],
     // quantity: 1,
-    quantityMax: 5,
+    quantityMax: null,
     // size: '2S',
-    sizeChoices: [
-      {value: '2S', text: 'Small'},
-      {value: '3M', text: 'Medium'},
-      {value: '4L', text: 'Large'}
-    ]
+    sizeChoices: []
   },
   validate: function (attrs) {
     for (var prop in attrs) {
@@ -32,5 +28,3 @@ app.ProductDetails = Backbone.Model.extend({
     // }
   }
 });
-
-
