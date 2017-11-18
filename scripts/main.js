@@ -1,32 +1,25 @@
+
+'use strict';
+
 $(document).ready(function(){
-  var product = new app.Product();
-  var productView = new app.ProductView({model: product});
-
-  $('body').append(productView.render().$el);
-
-  $('#size-selection').show();
-
-  $('#facets').on('change', function() {
-
-    $('#size-selection').hide();
-    $('#color-selection').hide();
-    $('#quantity-selection').hide();
-
-    if (this.value == 'Size') {
-      $('#size-selection').show();
-    } else if (this.value == 'Color') {
-      $('#color-selection').show();
-    } else {
-      $('#quantity-selection').show();
-    }
+  var productDetails = new app.ProductDetails({
+    colorChoices: ['Blue','Green','Red'],
+    quantityMax: 5,
+    sizeChoices: [
+      {value: '2S', text: 'Small'},
+      {value: '3M', text: 'Medium'},
+      {value: '4L', text: 'Large'}
+    ]
   });
+  var productDetailsView = new app.ProductDetailsView({model: productDetails});
 
-  $('#next').on('click', function() {
-    $('#shipaddress').show();
-  });
+  var address = new app.Address();
+  var addressView = new app.AddressView({model: address});
 
-  $('#finish').on('click', function() {
-    $('#analyticsinfo').show();
-    // Display the information picked up above.
-  });
+  var analytics = new app.Analytics();
+  var analyticsView = new app.AnalyticsView({model: analytics});
+
+  $('#productDetails').append(productDetailsView.render().$el);
+  $('#shipAddress').append(addressView.render().$el);
+  $('#analyticsInfo').append(analyticsView.render().$el);
 });

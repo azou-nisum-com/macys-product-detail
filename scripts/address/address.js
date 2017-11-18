@@ -6,13 +6,19 @@ app.Address = Backbone.Model.extend({
     street2: '',
     city: '',
     state: '',
-    zip: undefined,
+    zipCode: null,
   },
   validate: function(attrs){
-    attrs.forEach(attribute => {
-      if (!attribute) {
-        return 'Address is incomplete.'
+    for (var prop in attrs) {
+      if (!attrs[prop]) {
+        return 'Address is incomplete.';
       }
-    });
+    }
+
+    if (attrs.zipCode) {
+      if (parseInt(attrs.zipCode) === 'NaN' || attrs.zipCode.length !== 5) {
+      return 'Zip code is incorrect.';
+      }
+    }
   }
 });

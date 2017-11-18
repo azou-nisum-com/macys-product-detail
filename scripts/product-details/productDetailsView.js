@@ -1,22 +1,21 @@
 
 var app = app || {};
 app.ProductDetailsView = Backbone.View.extend({
+  // events: {
+  //   'change #color-selection': function(){this.setProductInfo('colors', 'color')},
+  //   'change #quantity-selection': function(){this.setProductInfo('quantity', 'quantity')},
+  //   'change #size-selection': function(){this.setProductInfo('sizes', 'size')}
+  // },
+  // setProductInfo: function(inputName, modelAttribute) {
+  //   var attribute = $('input[name="' + inputName + '"]:checked').val();
+  //   this.model.set(modelAttribute, attribute);
+  // },
   events: {
-    'change #color-selection': 'setProductColor',
-    'change #quantity-selection': 'setProductQuantity',
-    'change #size-selection': 'setProductSize'
+    'click #next': 'showAddressView'
   },
-  setProductColor: function() {
-    var color = $('input[name="colors"]:checked').val();
-    this.model.set('color', color);
-  },
-  setProductQuantity: function() {
-    var quantity = $('input[name="quantity"]:checked').val();
-    this.model.set('quantity', quantity);
-  },
-  setProductSize: function() {
-    var size = $('input[name="sizes"]:checked').val();
-    this.model.set('size', size);
+  showAddressView: function() {
+    $('#shipAddress').removeClass('hidden');
+    $('#next').addClass('hidden');
   },
   render: function() {
     var template = Handlebars.compile( $('#productDetailsTemplate').html() );

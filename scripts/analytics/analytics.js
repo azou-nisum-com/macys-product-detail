@@ -2,8 +2,8 @@
 var app = app || {};
 app.Analytics = Backbone.Model.extend({
   defaults: {
-    productInformation: 'Test1',
-    shippingInformation: 'Test2'
+    productInformation: '',
+    shippingInformation: ''
   },
   validate: function(attrs){
     if (!attrs.productInformation) {

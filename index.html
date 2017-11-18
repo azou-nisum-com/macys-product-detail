@@ -15,11 +15,9 @@
   <script src="scripts/product-details/productDetails.js"></script>
   <script src="scripts/address/address.js"></script>
   <script src="scripts/analytics/analytics.js"></script>
-  <script src="scripts/product.js"></script>
   <script src="scripts/product-details/productDetailsView.js"></script>
   <script src="scripts/address/addressView.js"></script>
   <script src="scripts/analytics/analyticsView.js"></script>
-  <script src="scripts/productView.js"></script>
   <script src="scripts/main.js"></script>
 
   <title>Product Details</title>
@@ -53,17 +51,12 @@
 	4. Should be able to explain design decisions.
 -->
 
-
-<div class="container" id="container"></div>
-
-<script id="productTemplate" type="text/x-handlebars-template">
-  <div class="container" id="container">
-    <h1>{{title}}</h1>
-    <div id="productDetails"></div>
-    <div id="shipAddress hidden"></div>
-    <div id="analyticsInfo"></div>
-  </div>
-</script>
+<div class="container" id="container">
+  <h1>This is a Backbone Demo.</h1>
+  <div id="productDetails"></div>
+  <div id="shipAddress" class="hidden"></div>
+  <div id="analyticsInfo"></div>
+</div>
 
 <script id="productDetailsTemplate" type="text/x-handlebars-template">
   <h4>Product: Nice dress for all occasions!</h4>
@@ -100,7 +93,6 @@
 </script>
 
 <script id="addressTemplate" type="text/x-handlebars-template">
-  <div id="shipaddress" class="hidden">
     <h2>
       Shipping Address
     </h2>
@@ -125,9 +117,9 @@
       <input type="number" name="zipcode" id="zipcode" autofocus/>
     </div>
     <div>
+      <span class="address--incorrect hidden">Address is incorrect</span>
       <button type="button" id="finish">Finish</button>
     </div>
-  </div>
 </script>
 
 <script id="analyticsTemplate" type="text/x-handlebars-template">
