@@ -21,13 +21,29 @@ app.AddressView = Backbone.View.extend({
         $('.address--incorrect').addClass('hidden');
       }
       $('#finish').addClass('hidden');
+      this.createAnalyticsView();
     } else {
       $('.address--incorrect').removeClass('hidden');
     }
   },
+  createAnalyticsView() {
+    let productDetails = {...this.model.attributes};
+    const productDetailInputNames = {
+      color: 'colors',
+      quantity: 'quantity',
+      size: 'sizes'
+    };
+    for (let prop in productDetailInputNames) {
+      productDetails[prop] = $(`input[name="${productDetailInputNames[prop]}"]:checked`).val();
+    }
+
+    let analytics = new app.Analytics(productDetails);
+    let analyticsView = new app.AnalyticsView({model: analytics});
+    $('#analyticsInfo').append(analyticsView.render().$el);
+  },
   render: function() {
-    var template = Handlebars.compile( $('#addressTemplate').html() );
-    var html = template(this.model.toJSON());
+    let template = Handlebars.compile( $('#addressTemplate').html() );
+    let html = template(this.model.toJSON());
     this.$el.html(html);
 
     return this;

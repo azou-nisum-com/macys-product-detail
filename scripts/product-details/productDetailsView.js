@@ -7,7 +7,7 @@ app.ProductDetailsView = Backbone.View.extend({
   //   'change #size-selection': function(){this.setProductInfo('sizes', 'size')}
   // },
   // setProductInfo: function(inputName, modelAttribute) {
-  //   var attribute = $('input[name="' + inputName + '"]:checked').val();
+  //   const attribute = $('input[name="' + inputName + '"]:checked').val();
   //   this.model.set(modelAttribute, attribute);
   // },
   events: {
@@ -18,8 +18,8 @@ app.ProductDetailsView = Backbone.View.extend({
     $('#next').addClass('hidden');
   },
   render: function() {
-    var template = Handlebars.compile( $('#productDetailsTemplate').html() );
-    var html = template(this.model.toJSON());
+    let template = Handlebars.compile( $('#productDetailsTemplate').html() );
+    let html = template(this.model.toJSON());
     this.$el.html(html);
 
     return this;

@@ -1,8 +1,6 @@
 
-'use strict';
-
 $(document).ready(function(){
-  var productDetails = new app.ProductDetails({
+  let productDetails = new app.ProductDetails({
     colorChoices: ['Blue','Green','Red'],
     quantityMax: 5,
     sizeChoices: [
@@ -11,15 +9,15 @@ $(document).ready(function(){
       {value: '4L', text: 'Large'}
     ]
   });
-  var productDetailsView = new app.ProductDetailsView({model: productDetails});
+  let productDetailsView = new app.ProductDetailsView({model: productDetails});
 
-  var address = new app.Address();
-  var addressView = new app.AddressView({model: address});
+  let address = new app.Address();
+  let addressView = new app.AddressView({model: address});
 
-  var analytics = new app.Analytics();
-  var analyticsView = new app.AnalyticsView({model: analytics});
+  // var analytics = new app.Analytics();
+  // var analyticsView = new app.AnalyticsView({model: analytics});
 
   $('#productDetails').append(productDetailsView.render().$el);
   $('#shipAddress').append(addressView.render().$el);
-  $('#analyticsInfo').append(analyticsView.render().$el);
+  // $('#analyticsInfo').append(analyticsView.render().$el);
 });

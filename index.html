@@ -54,7 +54,8 @@
 <div class="container" id="container">
   <h1>This is a Backbone Demo.</h1>
   <div id="productDetails"></div>
-  <div id="shipAddress" class="hidden"></div>
+  <div id="shipAddress"></div>
+  <!--<div id="shipAddress" class="hidden"></div>-->
   <div id="analyticsInfo"></div>
 </div>
 
@@ -124,9 +125,19 @@
 
 <script id="analyticsTemplate" type="text/x-handlebars-template">
   <h6>Selected product:</h6>
-  <p>{{productInformation}}</p>
+  <p>Color: {{color}}</p>
+  <p>Quantity: {{quantity}}</p>
+  <p>Size: {{size}}</p>
   <h6> Will be shipped to:</h6>
-  <p>{{shippingInformation}}</p>
+  <p>Street 1: {{street1}}</p>
+  {{#if street2}}
+    <p>Street 2: {{street2}}</p>
+  {{else}}
+    <p>Street 2: N/A</p>
+  {{/if}}
+  <p>City: {{city}}</p>
+  <p>State: {{state}}</p>
+  <p>ZIP Code: {{zipCode}}</p>
 </script>
 
 </body>

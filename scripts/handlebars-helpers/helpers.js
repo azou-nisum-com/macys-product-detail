@@ -1,10 +1,10 @@
 
 Handlebars.registerHelper('timesQuantity', function(items, options) {
-  var accum = '';
+  let accum = '';
 
-  for(var i = 0; i < items; ++i) {
+  for(let i = 0; i < items; ++i) {
     if (i === 0) {
-      accum += '<input type="radio" name="quantity" value={{this}} checked>1'
+      accum += '<input type="radio" name="quantity" value="1" checked>1'
     } else {
       accum += options.fn(i+1);
     }

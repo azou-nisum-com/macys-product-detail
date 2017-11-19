@@ -2,16 +2,20 @@
 var app = app || {};
 app.Analytics = Backbone.Model.extend({
   defaults: {
-    productInformation: '',
-    shippingInformation: ''
+    color: '',
+    quantity: '',
+    size: '',
+    street1: '',
+    street2: '',
+    city: '',
+    state: '',
+    zipCode: '',
   },
-  validate: function(attrs){
-    if (!attrs.productInformation) {
-      return "Product information missing.";
-    }
-
-    if (!attrs.shippingInformation) {
-      return "Shipping information missing.";
+  validate: function(attrs) {
+    for (let prop in attrs) {
+      if (prop !== 'street2' && !attrs[prop]) {
+        return 'Address is incomplete.';
+      }
     }
   }
 });

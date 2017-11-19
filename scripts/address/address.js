@@ -2,15 +2,20 @@
 var app = app || {};
 app.Address = Backbone.Model.extend({
   defaults: {
-    street1: '',
+    street1: '39355 California Street',
     street2: '',
-    city: '',
-    state: '',
-    zipCode: null,
+    city: 'Fremont',
+    state: 'CA',
+    zipCode: '94538',
+    // street1: '',
+    // street2: '',
+    // city: '',
+    // state: '',
+    // zipCode: '',
   },
   validate: function(attrs){
-    for (var prop in attrs) {
-      if (!attrs[prop]) {
+    for (let prop in attrs) {
+      if (prop !== 'street2' && !attrs[prop]) {
         return 'Address is incomplete.';
       }
     }

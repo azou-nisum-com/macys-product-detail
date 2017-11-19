@@ -10,7 +10,7 @@ app.ProductDetails = Backbone.Model.extend({
     sizeChoices: []
   },
   validate: function (attrs) {
-    for (var prop in attrs) {
+    for (let prop in attrs) {
       if (!attrs[prop] || attrs[prop].length === 0) {
         return 'Product details have not been properly input when initializing the Model.'
       }
