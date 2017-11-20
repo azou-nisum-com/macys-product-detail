@@ -14,6 +14,7 @@ app.ProductDetailsView = Backbone.View.extend({
     'click #next': 'showAddressView'
   },
   showAddressView: function() {
+    event.preventDefault();
     $('#shipAddress').removeClass('hidden');
     $('#next').addClass('hidden');
   },

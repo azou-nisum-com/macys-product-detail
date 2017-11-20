@@ -17,13 +17,13 @@ app.AddressView = Backbone.View.extend({
   },
   showAnalyticsView: function() {
     if (this.model.isValid()) {
-      if (!$('.address--incorrect').hasClass('hidden')) {
-        $('.address--incorrect').addClass('hidden');
+      if (!$('.macy--address--incorrect').hasClass('hidden')) {
+        $('.macy--address--incorrect').addClass('hidden');
       }
       $('#finish').addClass('hidden');
       this.createAnalyticsView();
     } else {
-      $('.address--incorrect').removeClass('hidden');
+      $('.macy--address--incorrect').removeClass('hidden');
     }
   },
   createAnalyticsView() {
@@ -39,6 +39,7 @@ app.AddressView = Backbone.View.extend({
 
     let analytics = new app.Analytics(productDetails);
     let analyticsView = new app.AnalyticsView({model: analytics});
+    $('#analyticsInfo').removeClass('hidden');
     $('#analyticsInfo').append(analyticsView.render().$el);
   },
   render: function() {

@@ -52,92 +52,117 @@
 -->
 
 <div class="container" id="container">
-  <h1>This is a Backbone Demo.</h1>
-  <div id="productDetails"></div>
-  <div id="shipAddress"></div>
-  <!--<div id="shipAddress" class="hidden"></div>-->
-  <div id="analyticsInfo"></div>
+  <h1 class="macy__h1">This is a Backbone Demo.</h1>
+  <div class="macy__group" id="productDetails"></div>
+  <!--<div class="macy__group" id="shipAddress"></div>-->
+  <div class="macy__group hidden" id="shipAddress"></div>
+  <div class="macy__group hidden" id="analyticsInfo"></div>
 </div>
 
 <script id="productDetailsTemplate" type="text/x-handlebars-template">
-  <h4>Product: Nice dress for all occasions!</h4>
-  <img alt="This is the image">
+  <h2 class="macy__h2">Product: Nice dress for all occasions!</h2>
+  <img class="macy__img" src="./images/dress.jpeg" alt="This is the image">
 
   <div id="color-selection">
-    <h3>Colors</h3>
-    <form>
+    <form class="macy__form macy__form--product">
+      <h6 class="macy__h6">Colors</h6>
       {{#each colorChoices}}
-      <input type="radio" name="colors" value={{this}} {{#if @first}}checked{{/if}}> {{this}}
+        <label class="macy__checkmark--container">
+          <input type="radio" name="colors" value={{this}} {{#if @first}}checked{{/if}}>
+          {{this}}
+          <span class="macy__form--checkmark"></span>
+        </label>
       {{/each}}
     </form>
   </div>
 
   <div id="quantity-selection">
-    <h3>Quantity</h3>
-    <form>
-      {{#timesQuantity quantityMax}}
-          <input type="radio" name="quantity" value={{this}}> {{this}}
-      {{/timesQuantity}}
+    <form class="macy__form macy__form--product">
+      <h6 class="macy__h6">Quantity</h6>
+        {{#timesQuantity quantityMax}}
+          <label class="macy__checkmark--container">
+              <input type="radio" name="quantity" value={{this}}>
+              {{this}}
+              <span class="macy__form--checkmark"></span>
+          </label>
+        {{/timesQuantity}}
     </form>
   </div>
 
   <div id="size-selection">
-    <h3>Sizes</h3>
-    <form>
+    <form class="macy__form macy__form--product">
+      <h6 class="macy__h6">Sizes</h6>
       {{#each sizeChoices}}
-    <input type="radio" name="sizes" value={{value}} {{#if @first}}checked{{/if}}> {{text}}
+        <label class="macy__checkmark--container">
+          <input type="radio" name="sizes" value={{value}} {{#if @first}}checked{{/if}}>
+          {{text}}
+          <span class="macy__form--checkmark"></span>
+        </label>
       {{/each}}
+      <button class="macy__button" id="next">Next</button>
+      <div style="clear: both;"></div>
     </form>
   </div>
-
-  <button id="next">Next</button>
 </script>
 
 <script id="addressTemplate" type="text/x-handlebars-template">
-    <h2>
+  <form class="macy__form macy__form--address">
+    <h2 class="macy__h2">
       Shipping Address
     </h2>
     <div>
-      <label>AddressOne</label>
-      <input type="text" required="required" name="address1" id="addOne" autofocus/>
+      <label>
+        Address Line 1
+        <input type="text" required="required" name="address1" id="addOne" autofocus/>
+      </label>
     </div>
     <div>
-      <label>AddressTwo</label>
-      <input type="text" name="address2" id="addTwo" autofocus/>
+      <label>
+        Address Line 2
+        <input type="text" name="address2" id="addTwo" autofocus/>
+      </label>
     </div>
     <div>
-      <label>City</label>
-      <input type="text" name="city" id="city" autofocus/>
+      <label>
+        City
+        <input type="text" name="city" id="city" autofocus/>
+      </label>
     </div>
     <div>
-      <label>State</label>
-      <input type="text" name="state" id="state" autofocus/>
+      <label>
+        State
+        <input type="text" name="state" id="state" autofocus/>
+      </label>
     </div>
     <div>
-      <label>ZipCode</label>
-      <input type="number" name="zipcode" id="zipcode" autofocus/>
+      <label>
+        Zip Code
+        <input type="number" name="zipcode" id="zipcode" autofocus/>
+      </label>
     </div>
     <div>
-      <span class="address--incorrect hidden">Address is incorrect</span>
-      <button type="button" id="finish">Finish</button>
+      <p class="macy--address--incorrect hidden">Address is incorrect.</p>
+      <button class="macy__button" type="button" id="finish">Finish</button>
+      <div style="clear: both;"></div>
     </div>
+  </form>
 </script>
 
 <script id="analyticsTemplate" type="text/x-handlebars-template">
-  <h6>Selected product:</h6>
-  <p>Color: {{color}}</p>
-  <p>Quantity: {{quantity}}</p>
-  <p>Size: {{size}}</p>
-  <h6> Will be shipped to:</h6>
-  <p>Street 1: {{street1}}</p>
+  <h6 class="macy__h6">Selected product:</h6>
+  <p class="macy__p">Color: {{color}}</p>
+  <p class="macy__p">Quantity: {{quantity}}</p>
+  <p class="macy__p">Size: {{size}}</p>
+  <h6 class="macy__h6"> Will be shipped to:</h6>
+  <p class="macy__p">Street 1: {{street1}}</p>
   {{#if street2}}
-    <p>Street 2: {{street2}}</p>
+    <p class="macy__p">Street 2: {{street2}}</p>
   {{else}}
-    <p>Street 2: N/A</p>
+    <p class="macy__p">Street 2: N/A</p>
   {{/if}}
-  <p>City: {{city}}</p>
-  <p>State: {{state}}</p>
-  <p>ZIP Code: {{zipCode}}</p>
+  <p class="macy__p">City: {{city}}</p>
+  <p class="macy__p">State: {{state}}</p>
+  <p class="macy__p">ZIP Code: {{zipCode}}</p>
 </script>
 
 </body>
