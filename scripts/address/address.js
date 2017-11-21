@@ -21,7 +21,7 @@ app.Address = Backbone.Model.extend({
     }
 
     if (attrs.zipCode) {
-      if (parseInt(attrs.zipCode) === 'NaN' || attrs.zipCode.length !== 5) {
+      if (isNaN(attrs.zipCode) || attrs.zipCode.length !== 5) {
       return 'Zip code is incorrect.';
       }
     }
