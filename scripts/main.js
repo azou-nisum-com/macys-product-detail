@@ -11,22 +11,6 @@ $(document).ready(function(){
   });
   let productDetailsView = new app.ProductDetailsView({model: productDetails});
 
-  let address = new app.Address();
-  let addressView = new app.AddressView({model: address});
 
-  // var analytics = new app.Analytics({
-  //   color: 'Blue',
-  //   quantity: '1',
-  //   size: '2S',
-  //   street1: '39355 California Street',
-  //   street2: '',
-  //   city: 'Fremont',
-  //   state: 'CA',
-  //   zipCode: '94538',
-  // });
-  // var analyticsView = new app.AnalyticsView({model: analytics});
-
-  $('#productDetails').append(productDetailsView.render().$el);
-  $('#shipAddress').append(addressView.render().$el);
-  // $('#analyticsInfo').append(analyticsView.render().$el);
+  $('#container').append(productDetailsView.render().$el);
 });

@@ -1,6 +1,8 @@
 
 var app = app || {};
 app.AddressView = Backbone.View.extend({
+  className: 'macy__group',
+  id: 'shipAddress',
   initialize: function() {
   },
   events: {
@@ -15,7 +17,9 @@ app.AddressView = Backbone.View.extend({
     var attribute = $('input[name="' + inputName + '"]').val();
     this.model.set(modelAttribute, attribute);
   },
-  showAnalyticsView: function() {
+  showAnalyticsView: function(event) {
+    event.preventDefault();
+
     if (this.model.isValid()) {
       if (!$('.macy--address--incorrect').hasClass('hidden')) {
         $('.macy--address--incorrect').addClass('hidden');
@@ -26,7 +30,7 @@ app.AddressView = Backbone.View.extend({
       $('.macy--address--incorrect').removeClass('hidden');
     }
   },
-  createAnalyticsView() {
+  createAnalyticsView: function() {
     let productDetails = {...this.model.attributes};
     const productDetailInputNames = {
       color: 'colors',
@@ -39,8 +43,7 @@ app.AddressView = Backbone.View.extend({
 
     let analytics = new app.Analytics(productDetails);
     let analyticsView = new app.AnalyticsView({model: analytics});
-    $('#analyticsInfo').removeClass('hidden');
-    $('#analyticsInfo').append(analyticsView.render().$el);
+    this.$el.after(analyticsView.render().$el);
   },
   render: function() {
     let template = Handlebars.compile( $('#addressTemplate').html() );

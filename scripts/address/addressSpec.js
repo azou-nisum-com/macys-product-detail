@@ -39,7 +39,9 @@ describe('Address', () => {
     it('is invalid for zip codes that are not five-digit integers', () => {
       address.set('zipCode', 'Not a number.');
       expect(address.isValid()).toBeFalsy();
+    });
 
+    it('is invalid for zip codes that are not strictly five digits', () => {
       address.set('zipCode', '9453');
       expect(address.isValid()).toBeFalsy();
     });

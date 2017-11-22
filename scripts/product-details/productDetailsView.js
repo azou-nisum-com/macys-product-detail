@@ -10,13 +10,17 @@ app.ProductDetailsView = Backbone.View.extend({
   //   const attribute = $('input[name="' + inputName + '"]:checked').val();
   //   this.model.set(modelAttribute, attribute);
   // },
+  className: 'macy__group',
+  id: 'productDetails',
   events: {
     'click #next': 'showAddressView'
   },
-  showAddressView: function() {
+  showAddressView: function(event) {
     event.preventDefault();
-    $('#shipAddress').removeClass('hidden');
     $('#next').addClass('hidden');
+    let address = new app.Address();
+    let addressView = new app.AddressView({model: address});
+    this.$el.after(addressView.render().$el);
   },
   render: function() {
     let template = Handlebars.compile( $('#productDetailsTemplate').html() );

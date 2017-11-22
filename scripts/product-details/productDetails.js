@@ -2,11 +2,8 @@
 var app = app || {};
 app.ProductDetails = Backbone.Model.extend({
   defaults: {
-    // color: '',
     colorChoices: [],
-    // quantity: 1,
     quantityMax: null,
-    // size: '2S',
     sizeChoices: []
   },
   validate: function (attrs) {
@@ -35,16 +32,5 @@ app.ProductDetails = Backbone.Model.extend({
     if (!Array.isArray(attrs.sizeChoices) || !attrs.sizeChoices.every(checkSize)) {
       return 'Size choices must all be objects containing value and text properties whose values are strings.';
     }
-    // if (attrs.colorChoices.indexOf(attrs.color !== -1)) {
-    //   return "Color is incorrect.";
-    // }
-    //
-    // if (!Number.isInteger(attrs.quantity)|| attrs.quantity < 1) {
-    //   return "Quantity is incorrect and/or not an integer.";
-    // }
-    //
-    // if (attrs.sizeChoices.indexOf(attrs.size !== -1)) {
-    //   return "Size is incorrect.";
-    // }
   }
 });
