@@ -13,14 +13,23 @@ app.ProductDetailsView = Backbone.View.extend({
   className: 'macy__group',
   id: 'productDetails',
   events: {
-    'click #next': 'showAddressView'
+    'click #next': 'showAddressView',
+    'click input': 'changeProductDetail'
   },
   showAddressView: function(event) {
     event.preventDefault();
     $('#next').addClass('hidden');
     let address = new app.Address();
-    let addressView = new app.AddressView({model: address});
+    let addressView = new app.AddressView({bus: this.bus, model: address});
     this.$el.after(addressView.render().$el);
+  },
+  changeProductDetail: function(event) {
+    const inputNamesToModelAttributes = {
+      colors: 'color',
+      quantity: 'quantity',
+      sizes: 'size'
+    };
+    app.EventBus.trigger('changeProductDetail', {attr: inputNamesToModelAttributes[event.name], value: event.value});
   },
   render: function() {
     let template = Handlebars.compile( $('#productDetailsTemplate').html() );

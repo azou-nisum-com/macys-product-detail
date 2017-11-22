@@ -3,9 +3,8 @@ var app = app || {};
 app.AddressView = Backbone.View.extend({
   className: 'macy__group',
   id: 'shipAddress',
-  initialize: function() {
-  },
   events: {
+    'keyup input': 'changeAddress',
     'keyup #addOne': function() {this.setAddressInfo('address1', 'street1')},
     'keyup #addTwo': function() {this.setAddressInfo('address2', 'street2')},
     'keyup #city': function() {this.setAddressInfo('city', 'city')},
@@ -16,6 +15,17 @@ app.AddressView = Backbone.View.extend({
   setAddressInfo: function(inputName, modelAttribute) {
     var attribute = $('input[name="' + inputName + '"]').val();
     this.model.set(modelAttribute, attribute);
+  },
+  changeAddress: function(event) {
+    const inputValue = $(`input[name="${event.target.name}"]`).val();
+    const inputNamesToModelAttributes = {
+      address1: 'street1',
+      address2: 'street2',
+      city: 'city',
+      state: 'state',
+      zipcode: 'zipCode'
+    };
+    app.EventBus.trigger('changeAddress', {attr: inputNamesToModelAttributes[event.target.name], value: inputValue});
   },
   showAnalyticsView: function(event) {
     event.preventDefault();

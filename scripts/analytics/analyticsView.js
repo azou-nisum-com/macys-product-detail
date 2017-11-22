@@ -5,6 +5,11 @@ app.AnalyticsView = Backbone.View.extend({
   id: 'analyticsInfo',
   initialize: function() {
     this.model.on('change', this.render, this);
+    app.EventBus.on('changeProductDetail', this.changeData, this);
+    app.EventBus.on('changeAddress', this.changeData, this);
+  },
+  changeData: function(data) {
+    this.model.set(data.attr, data.value);
   },
   render: function() {
     let template = Handlebars.compile( $('#analyticsTemplate').html() );
