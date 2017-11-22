@@ -1,0 +1,108 @@
+
+<div class="test"></div>
+
+<script id="productDetailsTemplate" type="text/x-handlebars-template">
+  <h2 class="macy__h2">Product: Nice dress for all occasions!</h2>
+  <img class="macy__img" src="./images/dress.jpeg" alt="This is the image">
+
+  <div id="color-selection">
+    <form class="macy__form macy__form--product">
+      <h6 class="macy__h6">Colors</h6>
+      {{#each colorChoices}}
+      <label class="macy__checkmark--container">
+        <input type="radio" name="colors" value={{this}} {{#if @first}}checked{{/if}}>
+        {{this}}
+        <span class="macy__form--checkmark"></span>
+      </label>
+      {{/each}}
+    </form>
+  </div>
+
+  <div id="quantity-selection">
+    <form class="macy__form macy__form--product">
+      <h6 class="macy__h6">Quantity</h6>
+      {{#timesQuantity quantityMax}}
+      <label class="macy__checkmark--container">
+        <input type="radio" name="quantity" value={{this}}>
+        {{this}}
+        <span class="macy__form--checkmark"></span>
+      </label>
+      {{/timesQuantity}}
+    </form>
+  </div>
+
+  <div id="size-selection">
+    <form class="macy__form macy__form--product">
+      <h6 class="macy__h6">Sizes</h6>
+      {{#each sizeChoices}}
+      <label class="macy__checkmark--container">
+        <input type="radio" name="sizes" value={{value}} {{#if @first}}checked{{/if}}>
+        {{text}}
+        <span class="macy__form--checkmark"></span>
+      </label>
+      {{/each}}
+      <button class="macy__button" id="next">Next</button>
+      <div style="clear: both;"></div>
+    </form>
+  </div>
+</script>
+
+<script id="addressTemplate" type="text/x-handlebars-template">
+  <form class="macy__form macy__form--address">
+    <h2 class="macy__h2">
+      Shipping Address
+    </h2>
+    <div>
+      <label>
+        Address Line 1
+        <input type="text" required="required" name="address1" id="addOne" autofocus/>
+      </label>
+    </div>
+    <div>
+      <label>
+        Address Line 2
+        <input type="text" name="address2" id="addTwo" autofocus/>
+      </label>
+    </div>
+    <div>
+      <label>
+        City
+        <input type="text" name="city" id="city" autofocus/>
+      </label>
+    </div>
+    <div>
+      <label>
+        State
+        <input type="text" name="state" id="state" autofocus/>
+      </label>
+    </div>
+    <div>
+      <label>
+        Zip Code
+        <input type="number" name="zipcode" id="zipcode" autofocus/>
+      </label>
+    </div>
+    <div>
+      <p class="macy--address--incorrect hidden">Address is incorrect.</p>
+      <button class="macy__button" type="button" id="finish">Finish</button>
+      <div style="clear: both;"></div>
+    </div>
+  </form>
+</script>
+
+<script id="analyticsTemplate" type="text/x-handlebars-template">
+  <h6 class="macy__h6">Selected product:</h6>
+  <p class="macy__p">Color: {{color}}</p>
+  <p class="macy__p">Quantity: {{quantity}}</p>
+  <p class="macy__p">Size: {{size}}</p>
+  <h6 class="macy__h6"> Will be shipped to:</h6>
+  <p class="macy__p">Street 1: {{street1}}</p>
+  {{#if street2}}
+  <p class="macy__p">Street 2: {{street2}}</p>
+  {{else}}
+  <p class="macy__p">Street 2: N/A</p>
+  {{/if}}
+  <p class="macy__p">City: {{city}}</p>
+  <p class="macy__p">State: {{state}}</p>
+  <p class="macy__p">ZIP Code: {{zipCode}}</p>
+</script>
