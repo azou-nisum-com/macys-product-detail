@@ -9,16 +9,16 @@ app.AddressView = Backbone.View.extend({
     app.EventBus.on('validAnalytics', this.validAnalytics, this);
   },
   invalidAddress: function() {
-    if ($('.macy--address--incorrect').hasClass('hidden')) {
-      $('.macy--address--incorrect').removeClass('hidden');
+    if (this.$('.macy--incorrect').hasClass('hidden')) {
+      this.$('.macy--incorrect').removeClass('hidden');
     }
   },
   showAddressView: function() {
     this.$el.removeClass('hidden');
   },
   validAnalytics: function() {
-    if (!$('.macy--address--incorrect').hasClass('hidden')) {
-      $('.macy--address--incorrect').addClass('hidden');
+    if (!this.$('.macy--incorrect').hasClass('hidden')) {
+      this.$('.macy--incorrect').addClass('hidden');
     }
     $('#finish').addClass('hidden');
   },

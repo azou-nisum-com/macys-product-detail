@@ -3,7 +3,7 @@ var app = app || {};
 app.Analytics = Backbone.Model.extend({
   defaults: {
     colors: '',
-    quantity: '1',
+    quantity: '',
     sizes: '',
     address1: '',
     address2: '',

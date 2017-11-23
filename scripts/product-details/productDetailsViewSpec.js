@@ -1,5 +1,5 @@
 
-describe('Analytics view', () => {
+describe('Product details view', () => {
   let productDetailsObject;
   let productDetails;
   let productDetailsView;
@@ -60,14 +60,9 @@ describe('Analytics view', () => {
   describe('Clicking next', () => {
     it('hides the next button', () => {
       const next = $('#next');
-      expect(next.is(":visible")).toBeTruthy();
+      expect(next.is(':visible')).toBeTruthy();
       next.click();
-      expect(next.is(":visible")).toBeFalsy();
-    });
-
-    it('creates a new address view', () => {
-      $('#next').click();
-      expect($('#shipAddress')).toBeInDOM();
+      expect(next.is(':visible')).toBeFalsy();
     });
   });
 

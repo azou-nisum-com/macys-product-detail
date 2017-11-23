@@ -15,7 +15,11 @@ $(document).ready(function(){
 
   let addressView = new app.AddressView();
 
-  let analytics = new app.Analytics({colors: productDetailsObj.colorChoices[0], sizes: productDetailsObj.sizeChoices[0].value});
+  let analytics = new app.Analytics({
+    colors: productDetailsObj.colorChoices[0],
+    quantity: 1,
+    sizes: productDetailsObj.sizeChoices[0].value
+  });
   let analyticsView = new app.AnalyticsView({model: analytics});
 
   $('#container').append(productDetailsView.render().$el);

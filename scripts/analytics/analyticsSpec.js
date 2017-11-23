@@ -33,11 +33,6 @@ describe('Analytics', () => {
     it('is valid with a valid address and product details', () => {
       expect(analytics.isValid()).toBeTruthy();
     });
-
-    it('is valid even without a address2 attribute', () => {
-      analytics.set('address2', '');
-      expect(analytics.isValid()).toBeTruthy();
-    });
   });
 
 });
