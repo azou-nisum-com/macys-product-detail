@@ -3,6 +3,14 @@ var app = app || {};
 app.ProductDetailsView = Backbone.View.extend({
   className: 'macy__group',
   id: 'productDetails',
+  initialize: function() {
+    app.EventBus.on('invalidProduct', this.invalidProduct, this);
+  },
+  invalidProduct() {
+    if ($('.macy--address--incorrect').hasClass('hidden')) {
+      $('.macy--address--incorrect').removeClass('hidden');
+    }
+  },
   events: {
     'click #next': 'showAddressView',
     'click input': 'changeProductDetail'

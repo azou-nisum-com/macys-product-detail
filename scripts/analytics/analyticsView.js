@@ -13,11 +13,22 @@ app.AnalyticsView = Backbone.View.extend({
     this.model.set(data.attr, data.value);
   },
   showAnalyticsView: function() {
-    if (this.model.isValid()) {
-      this.$el.removeClass('hidden');
-      app.EventBus.trigger('validAnalytics');
+    const self = this;
+    if (!self.model.isValid()) {
+      switch(self.model.validationError) {
+        case 'Address is incomplete.':
+          app.EventBus.trigger('invalidAddress');
+          break;
+        case 'Zip code is incorrect.':
+          app.EventBus.trigger('invalidAddress');
+          break;
+        case 'Product details are incomplete':
+          app.EventBus.trigger('invalidProduct');
+          break;
+      }
     } else {
-      app.EventBus.trigger('invalidAnalytics');
+      self.$el.removeClass('hidden');
+      app.EventBus.trigger('validAnalytics');
     }
   },
   render: function() {

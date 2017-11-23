@@ -12,10 +12,12 @@ app.Analytics = Backbone.Model.extend({
     zipcode: '',
   },
   validate: function(attrs) {
-    for (let prop in attrs) {
-      if (prop !== 'address2' && !attrs[prop]) {
+    if (!attrs.colors || !attrs.sizes) {
+        return 'Product details are incomplete.';
+    }
+
+    if (!attrs.address1 || !attrs.city || !attrs.state || !attrs.zipcode) {
         return 'Address is incomplete.';
-      }
     }
 
     if (attrs.zipcode) {

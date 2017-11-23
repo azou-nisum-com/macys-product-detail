@@ -4,11 +4,11 @@ app.AddressView = Backbone.View.extend({
   className: 'macy__group hidden',
   id: 'shipAddress',
   initialize: function() {
-    app.EventBus.on('invalidAnalytics', this.invalidAnalytics, this);
+    app.EventBus.on('invalidAddress', this.invalidAddress, this);
     app.EventBus.on('showAddressView', this.showAddressView, this);
     app.EventBus.on('validAnalytics', this.validAnalytics, this);
   },
-  invalidAnalytics: function() {
+  invalidAddress: function() {
     if ($('.macy--address--incorrect').hasClass('hidden')) {
       $('.macy--address--incorrect').removeClass('hidden');
     }
