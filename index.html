@@ -14,7 +14,6 @@
   <script src="scripts/helpers/eventBus.js"></script>
 
   <script src="scripts/product-details/productDetails.js"></script>
-  <script src="scripts/address/address.js"></script>
   <script src="scripts/analytics/analytics.js"></script>
   <script src="scripts/product-details/productDetailsView.js"></script>
   <script src="scripts/address/addressView.js"></script>
@@ -147,19 +146,19 @@
 
 <script id="analyticsTemplate" type="text/x-handlebars-template">
   <h6 class="macy__h6">Selected product:</h6>
-  <p class="macy__p">Color: {{color}}</p>
+  <p class="macy__p">Color: {{colors}}</p>
   <p class="macy__p">Quantity: {{quantity}}</p>
-  <p class="macy__p">Size: {{size}}</p>
+  <p class="macy__p">Size: {{sizes}}</p>
   <h6 class="macy__h6"> Will be shipped to:</h6>
-  <p class="macy__p">Street 1: {{street1}}</p>
-  {{#if street2}}
-    <p class="macy__p">Street 2: {{street2}}</p>
+  <p class="macy__p">Street 1: {{address1}}</p>
+  {{#if address2}}
+    <p class="macy__p">Street 2: {{address2}}</p>
   {{else}}
     <p class="macy__p">Street 2: N/A</p>
   {{/if}}
   <p class="macy__p">City: {{city}}</p>
   <p class="macy__p">State: {{state}}</p>
-  <p class="macy__p">ZIP Code: {{zipCode}}</p>
+  <p class="macy__p">ZIP Code: {{zipcode}}</p>
 </script>
 
 </body>

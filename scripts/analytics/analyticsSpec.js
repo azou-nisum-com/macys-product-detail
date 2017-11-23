@@ -19,14 +19,14 @@ describe('Analytics', () => {
   describe('Analytics validation', () => {
     beforeEach(() => {
       analytics.set({
-        color: 'Blue',
+        colors: 'Blue',
         quantity: '1',
-        size: '2S',
-        street1: '39355 California Street',
-        street2: 'Room 1',
+        sizes: '2S',
+        address1: '39355 California Street',
+        address2: 'Room 1',
         city: 'Fremont',
         state: 'CA',
-        zipCode: '94538',
+        zipcode: '94538',
       });
     });
 
@@ -34,8 +34,8 @@ describe('Analytics', () => {
       expect(analytics.isValid()).toBeTruthy();
     });
 
-    it('is valid even without a street2 attribute', () => {
-      analytics.set('street2', '');
+    it('is valid even without a address2 attribute', () => {
+      analytics.set('address2', '');
       expect(analytics.isValid()).toBeTruthy();
     });
   });

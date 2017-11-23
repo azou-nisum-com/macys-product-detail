@@ -7,11 +7,11 @@ describe('Address view', () => {
   beforeEach(() => {
     loadFixtures('fixtures.html');
     addressObject = {
-      street1: '39355 California Street',
-      street2: 'Room 1',
+      address1: '39355 California Street',
+      address2: 'Room 1',
       city: 'Fremont',
       state: 'CA',
-      zipCode: '94538',
+      zipcode: '94538',
     };
     address = new app.Address();
     addressView = new app.AddressView({model: address});
@@ -21,11 +21,11 @@ describe('Address view', () => {
 
   describe('Inputting address data', () => {
     const addressParts = [
-      {htmlId: 'addOne', modelAttr: 'street1'},
-      {htmlId: 'addTwo', modelAttr: 'street2'},
+      {htmlId: 'addOne', modelAttr: 'address1'},
+      {htmlId: 'addTwo', modelAttr: 'address2'},
       {htmlId: 'city', modelAttr: 'city'},
       {htmlId: 'state', modelAttr: 'state'},
-      {htmlId: 'zipcode', modelAttr: 'zipCode'}
+      {htmlId: 'zipcode', modelAttr: 'zipcode'}
     ];
 
     addressParts.forEach(part => {
