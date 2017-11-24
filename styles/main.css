@@ -55,7 +55,6 @@ Custom styles
 */
 
 body {
-  color: #888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -67,13 +66,35 @@ input {
   display: none;
 }
 
-.container {
-  margin: 2em auto;
-  width: 40%;
+html {
+  position: relative;
 }
 
+html:after {
+  background: url(../images/store-background.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.container {
+  margin: 2em auto;
+  width: 50%;
+}
+
+
 .macy__group {
-  border: 1px solid lightgrey;
+  background-color: #f5f5f5;
+  border: 1px solid lightblue;
   border-radius: 5px;
   margin-top: 10%;
   margin-bottom: 10%;
@@ -81,8 +102,12 @@ input {
 }
 
 .macy__h1, .macy__h2, .macy__h4 {
-  color: #648880;
+  color: #DBA832;
   text-align: center;
+}
+
+.macy__h2, .macy__h4 {
+  font-weight: 400;
 }
 
 .macy__h1, .macy__h2, .macy__p {
@@ -90,8 +115,13 @@ input {
 }
 
 .macy__h1 {
+  background-color: white;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  font: 16px/22px "Palatino", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3em;
   line-height: 1.2em;
+  padding: 2% 2% 1% 2%;
 }
 
 .macy__h2 {
@@ -100,9 +130,8 @@ input {
 }
 
 .macy__h6 {
-  color: #a9b2b9;
+  color: #3f3f3f;
   font-size: 1.2em;
-  font-weight: 400;
   margin: 0.5em auto;
   text-align: center;
   text-transform: uppercase;
@@ -111,8 +140,9 @@ input {
 .macy__img {
   border-radius: 5px;
   display: block;
-  margin: 1em auto 5em auto;
-  max-width: 100%;
+  margin: 1em auto 3em auto;
+  max-height: 60%;
+  max-width: 60%;
 }
 
 .macy__button {
@@ -151,7 +181,7 @@ input {
   left: 0;
   height: 20px;
   width: 20px;
-  background-color: #eee;
+  background-color: gainsboro;
 }
 
 .macy__checkmark--container input:checked ~ .macy__form--checkmark {
@@ -186,7 +216,7 @@ input {
 }
 
 .macy__form--address input {
-  border: 1px solid lightgrey;
+  border: 1px solid darkgrey;
   border-radius: 5px;
   color: darkgrey;
   margin: 0.3em 0 1em 0;
