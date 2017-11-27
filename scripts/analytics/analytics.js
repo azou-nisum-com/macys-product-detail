@@ -12,7 +12,7 @@ app.Analytics = Backbone.Model.extend({
     zipcode: '',
   },
   validate: function(attrs) {
-    if (!attrs.colors || !attrs.sizes) {
+    if (!attrs.colors || !attrs.sizes || !attrs.quantity) {
         return 'Product details are incomplete.';
     }
 

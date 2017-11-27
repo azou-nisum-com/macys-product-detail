@@ -22,7 +22,7 @@ app.AnalyticsView = Backbone.View.extend({
         case 'Zip code is incorrect.':
           app.EventBus.trigger('invalidAddress');
           break;
-        case 'Product details are incomplete':
+        case 'Product details are incomplete.':
           app.EventBus.trigger('invalidProduct');
           break;
       }

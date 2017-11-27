@@ -16,7 +16,7 @@ describe('Analytics', () => {
     expect(analytics.isValid()).toBeFalsy();
   });
 
-  describe('Analytics validation', () => {
+  describe('Validation', () => {
     beforeEach(() => {
       analytics.set({
         colors: 'Blue',

@@ -16,7 +16,7 @@ describe('Product details', () => {
     expect(productDetails.isValid()).toBeFalsy();
   });
 
-  describe('Product details validation', () => {
+  describe('Validation', () => {
     beforeEach(() => {
       productDetails.set({
         colorChoices: ['Blue','Green','Red'],
@@ -33,66 +33,22 @@ describe('Product details', () => {
       expect(productDetails.isValid()).toBeTruthy();
     });
 
-    describe('Color choices', () => {
-      it('is invalid for color choices that are an empty array', () => {
-        productDetails.set('colorChoices', []);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for color choices that are not arrays', () => {
-        productDetails.set('colorChoices', 'Not an array.');
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for color choices that are not arrays of strings', () => {
-        productDetails.set('colorChoices', [1, 2, 3]);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-    });
-
-    describe('Quantity max', () => {
-      it('is invalid for quantity max that is not an integer', () => {
-        productDetails.set('quantityMax', 'Not an integer.');
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for quantity max that is zero', () => {
-        productDetails.set('quantityMax', 0);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for quantity max that is negative', () => {
-        productDetails.set('quantityMax', -1);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-    });
-
-    describe('Size choices', () => {
-      it('is invalid for size choices that are empty arrays', () => {
-        productDetails.set('sizeChoices', []);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for size choices that are not arrays', () => {
-        productDetails.set('sizeChoices', 'Not an array.');
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for size choices that are not arrays of objects', () => {
-        productDetails.set('sizeChoices', ['Not an array of objects']);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for size choices that are not arrays of objects containing "value" and "text" properties', () => {
-        productDetails.set('quantityMax', [{value: 'No text property.'}]);
-        expect(productDetails.isValid()).toBeFalsy();
-
-        productDetails.set('quantityMax', [{text: 'No value property.'}]);
-        expect(productDetails.isValid()).toBeFalsy();
-      });
-
-      it('is invalid for size choices that are not arrays of objects whose properties are strings', () => {
-        productDetails.set('quantityMax', [{value: 0, text: 'Value property not a string.'}]);
+    const validationParams = [
+      {name: 'color choices', description: 'are an empty array', type: 'colorChoices', value: []},
+      {name: 'color choices', description: 'are not arrays', type: 'colorChoices', value: 'Not an array'},
+      {name: 'color choices', description: 'are not arrays of strings', type: 'colorChoices', value: [1, 2, 3]},
+      {name: 'quantity', description: 'is not an integer', type: 'quantityMax', value: 'Not an integer.'},
+      {name: 'quantity', description: 'is zero', type: 'quantityMax', value: 0},
+      {name: 'quantity', description: 'is negative', type: 'quantityMax', value: -1},
+      {name: 'size choices', description: 'are empty arrays', type: 'sizeChoices', value: []},
+      {name: 'size choices', description: 'are not arrays', type: 'sizeChoices', value: 'Not an array'},
+      {name: 'size choices', description: 'are not arrays of objects', type: 'sizeChoices', value: ['Not an array of objects']},
+      {name: 'size choices', description: 'are not arrays of objects containing "value" and "text" properties', type: 'sizeChoices', value: [{value: 'No text property.'}]},
+      {name: 'size choices', description: 'are not arrays of objects whose properties are strings', type: 'sizeChoices', value: [{value: 0, text: 'Value property not a string.'}]}
+    ];
+    validationParams.forEach(param => {
+      it(`is invalid for ${param.name} that ${param.description}`, () => {
+        productDetails.set(param.type, param.value);
         expect(productDetails.isValid()).toBeFalsy();
       });
     });

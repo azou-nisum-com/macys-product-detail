@@ -4,14 +4,9 @@ app.AddressView = Backbone.View.extend({
   className: 'macy__group hidden',
   id: 'shipAddress',
   initialize: function() {
-    app.EventBus.on('invalidAddress', this.invalidAddress, this);
     app.EventBus.on('showAddressView', this.showAddressView, this);
     app.EventBus.on('validAnalytics', this.validAnalytics, this);
-  },
-  invalidAddress: function() {
-    if (this.$('.macy--incorrect').hasClass('hidden')) {
-      this.$('.macy--incorrect').removeClass('hidden');
-    }
+    app.EventBus.on('invalidAddress', this.invalidAddress, this);
   },
   showAddressView: function() {
     this.$el.removeClass('hidden');
@@ -21,6 +16,11 @@ app.AddressView = Backbone.View.extend({
       this.$('.macy--incorrect').addClass('hidden');
     }
     $('#finish').addClass('hidden');
+  },
+  invalidAddress: function() {
+    if (this.$('.macy--incorrect').hasClass('hidden')) {
+      this.$('.macy--incorrect').removeClass('hidden');
+    }
   },
   events: {
     'keyup input': 'changeAddress',

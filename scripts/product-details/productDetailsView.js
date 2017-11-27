@@ -4,17 +4,17 @@ app.ProductDetailsView = Backbone.View.extend({
   className: 'macy__group',
   id: 'productDetails',
   initialize: function() {
-    app.EventBus.on('invalidProduct', this.invalidProduct, this);
     app.EventBus.on('validAnalytics', this.validAnalytics, this);
-  },
-  invalidProduct() {
-    if (this.$('.macy--incorrect').hasClass('hidden')) {
-      this.$('.macy--incorrect').removeClass('hidden');
-    }
+    app.EventBus.on('invalidProduct', this.invalidProduct, this);
   },
   validAnalytics: function() {
     if (!this.$('.macy--incorrect').hasClass('hidden')) {
       this.$('macy--incorrect').addClass('hidden');
+    }
+  },
+  invalidProduct() {
+    if (this.$('.macy--incorrect').hasClass('hidden')) {
+      this.$('.macy--incorrect').removeClass('hidden');
     }
   },
   events: {
