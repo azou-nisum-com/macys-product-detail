@@ -72,7 +72,7 @@ describe('Product details view', () => {
 
     const inputNames = ['colors', 'quantity', 'sizes'];
     inputNames.forEach(name => {
-      it(`passes data into a "changeProductDetail" event, when the user selects a ${name} radio button`, () => {
+      it(`passes selected data into a "changeProductDetail" event, when the user selects a ${name} radio button`, () => {
         const spy = jasmine.createSpy('changeProductDetail');
         app.EventBus.on('changeProductDetail', spy);
 
