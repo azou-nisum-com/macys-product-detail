@@ -27,8 +27,8 @@ app.AddressView = Backbone.View.extend({
     'click #finish': 'showAnalyticsView'
   },
   changeAddress: function(event) {
-    const inputValue = $(`input[name="${event.target.name}"]`).val();
-    app.EventBus.trigger('changeAddress', {attr: event.target.name, value: inputValue});
+    const $inputValue = $(`input[name="${event.target.name}"]`).val();
+    app.EventBus.trigger('changeAddress', {attr: event.target.name, value: $inputValue});
   },
   showAnalyticsView: function() {
     app.EventBus.trigger('showAnalyticsView');

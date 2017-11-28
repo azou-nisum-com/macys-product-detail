@@ -55,10 +55,10 @@ describe('Product details view', () => {
 
   describe('Events', () => {
     it('hides the next button, when the next button is clicked', () => {
-      const next = $('#next');
-      expect(next.is(':visible')).toBeTruthy();
-      next.click();
-      expect(next.is(':visible')).toBeFalsy();
+      const $next = $('#next');
+      expect($next.is(':visible')).toBeTruthy();
+      $next.click();
+      expect($next.is(':visible')).toBeFalsy();
     });
 
     it('triggers a "showAddressView" event, when the next button is clicked', () => {
@@ -72,13 +72,19 @@ describe('Product details view', () => {
 
     const inputNames = ['colors', 'quantity', 'sizes'];
     inputNames.forEach(name => {
-      it(`triggers a "changeProductDetail" event, when the user selects a ${name} radio button`, () => {
+      it(`passes data into a "changeProductDetail" event, when the user selects a ${name} radio button`, () => {
         const spy = jasmine.createSpy('changeProductDetail');
         app.EventBus.on('changeProductDetail', spy);
 
-        $(`input[name="${name}"]`)[1].click();
+        const $secondRadioButton = $(`input[name="${name}"]:eq(1)`);
+        const expectedData = {
+          attr: name,
+          value: $secondRadioButton.val()
+        };
 
-        expect(spy).toHaveBeenCalled();
+        $secondRadioButton.click();
+
+        expect(spy).toHaveBeenCalledWith(expectedData);
       });
     });
 

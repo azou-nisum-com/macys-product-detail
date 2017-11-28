@@ -50,13 +50,21 @@ describe('Address view', () => {
 
     const addressParts = ['addOne', 'addTwo', 'city', 'state', 'zipcode'];
     addressParts.forEach(part => {
-      it(`triggers a "changeAddress" event, when user types in the ${part} address line`, () => {
+      it(`passes input data into a "changeAddress" event, when user types in the ${part} address line`, () => {
         const spy = jasmine.createSpy('changeAddress');
         app.EventBus.on('changeAddress', spy);
 
-        $(`#${part}`).trigger(jQuery.Event('keyup'));
+        const $input = $(`#${part}`);
+        const expectedValue = '1';
+        const expectedData = {
+          attr: $input.attr('name'),
+          value: expectedValue
+        };
 
-        expect(spy).toHaveBeenCalled();
+        $input.val(expectedValue);
+        $input.trigger(jQuery.Event('keyup'));
+
+        expect(spy).toHaveBeenCalledWith(expectedData);
       });
     });
   });
