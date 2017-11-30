@@ -8,8 +8,12 @@
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="bower_components/backbone/backbone.js"></script>
+  <script src="bower_components/backbone.radio/build/backbone.radio.js"></script>
+  <script src="bower_components/backbone.marionette/lib/backbone.marionette.js"></script>
   <script src="bower_components/handlebars/handlebars.js"></script>
 
+  <script src="scripts/app.js"></script>
+  <script src="scripts/rootView.js"></script>
   <script src="scripts/helpers/handlebarHelpers.js"></script>
   <script src="scripts/helpers/eventBus.js"></script>
 
@@ -52,8 +56,14 @@
 -->
 
 <div class="container" id="container">
-  <h1 class="macy__h1">This is a Backbone Demo.</h1>
 </div>
+
+<script id="rootTemplate" type="text/x-handlebars-template">
+  <h1 class="macy__h1">This is a Backbone Demo.</h1>
+  <div id="productDetails"></div>
+  <div id="shipAddress"></div>
+  <div id="analyticsInfo"></div>
+</script>
 
 <script id="productDetailsTemplate" type="text/x-handlebars-template">
   <h2 class="macy__h2">Product: Nice dress for all occasions!</h2>
