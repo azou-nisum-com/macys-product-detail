@@ -24,7 +24,6 @@ app.ProductDetailsView = Backbone.View.extend({
   showAddressView: function(event) {
     event.preventDefault();
     this.$('#next').addClass('hidden');
-    // $('#next').addClass('hidden');
     app.EventBus.trigger('showAddressView');
   },
   changeProductDetail: function(event) {
