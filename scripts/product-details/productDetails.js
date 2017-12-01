@@ -3,7 +3,7 @@ var app = app || {};
 app.ProductDetails = Backbone.Model.extend({
   defaults: {
     colorChoices: [],
-    quantityMax: null,
+    quantityChoices: null,
     sizeChoices: []
   },
   validate: function (attrs) {
@@ -13,7 +13,7 @@ app.ProductDetails = Backbone.Model.extend({
       }
     }
 
-    if (isNaN(attrs.quantityMax) || attrs.quantityMax <= 0) {
+    if (isNaN(attrs.quantityChoices) || attrs.quantityChoices <= 0) {
       return 'Quantity max must be a positive integer';
     }
 

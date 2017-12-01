@@ -25,8 +25,7 @@ app.ProductDetailsView = Backbone.Marionette.View.extend({
   },
   showAddressView: function(event) {
     event.preventDefault();
-    $('#next').addClass('hidden');
-
+    this.$('#next').addClass('hidden');
     app.NextChannel.trigger('show:address:view');
   },
   changeProductDetail: function(event) {

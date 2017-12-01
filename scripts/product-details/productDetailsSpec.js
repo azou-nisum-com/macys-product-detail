@@ -6,9 +6,9 @@ describe('Product details', () => {
     productDetails = new app.ProductDetails();
   });
 
-  it('should set colorChoices and sizeChoices as empty arrays, while setting quantityMax as null', () => {
+  it('should set colorChoices and sizeChoices as empty arrays, while setting quantityChoices as null', () => {
     expect(productDetails.get('colorChoices')).toEqual([]);
-    expect(productDetails.get('quantityMax')).toBe(null);
+    expect(productDetails.get('quantityChoices')).toBe(null);
     expect(productDetails.get('sizeChoices')).toEqual([]);
   });
 
@@ -20,7 +20,7 @@ describe('Product details', () => {
     beforeEach(() => {
       productDetails.set({
         colorChoices: ['Blue','Green','Red'],
-        quantityMax: 5,
+        quantityChoices: 5,
         sizeChoices: [
           {value: '2S', text: 'Small'},
           {value: '3M', text: 'Medium'},
@@ -37,9 +37,9 @@ describe('Product details', () => {
       {name: 'color choices', description: 'are an empty array', type: 'colorChoices', value: []},
       {name: 'color choices', description: 'are not arrays', type: 'colorChoices', value: 'Not an array'},
       {name: 'color choices', description: 'are not arrays of strings', type: 'colorChoices', value: [1, 2, 3]},
-      {name: 'quantity', description: 'is not an integer', type: 'quantityMax', value: 'Not an integer.'},
-      {name: 'quantity', description: 'is zero', type: 'quantityMax', value: 0},
-      {name: 'quantity', description: 'is negative', type: 'quantityMax', value: -1},
+      {name: 'quantity', description: 'is not an integer', type: 'quantityChoices', value: 'Not an integer.'},
+      {name: 'quantity', description: 'is zero', type: 'quantityChoices', value: 0},
+      {name: 'quantity', description: 'is negative', type: 'quantityChoices', value: -1},
       {name: 'size choices', description: 'are empty arrays', type: 'sizeChoices', value: []},
       {name: 'size choices', description: 'are not arrays', type: 'sizeChoices', value: 'Not an array'},
       {name: 'size choices', description: 'are not arrays of objects', type: 'sizeChoices', value: ['Not an array of objects']},

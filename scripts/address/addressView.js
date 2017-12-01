@@ -17,7 +17,7 @@ app.AddressView = Backbone.Marionette.View.extend({
     if (!this.$('.macy--incorrect').hasClass('hidden')) {
       this.$('.macy--incorrect').addClass('hidden');
     }
-    $('#finish').addClass('hidden');
+    this.$('#finish').addClass('hidden');
   },
   invalidAddress: function() {
     if (this.$('.macy--incorrect').hasClass('hidden')) {

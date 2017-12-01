@@ -14,7 +14,6 @@
 
   <script src="scripts/app.js"></script>
   <script src="scripts/rootView.js"></script>
-  <script src="scripts/helpers/handlebarHelpers.js"></script>
   <script src="scripts/helpers/channel.js"></script>
 
   <script src="scripts/product-details/productDetails.js"></script>
@@ -85,13 +84,13 @@
   <div id="quantity-selection">
     <form class="macy__form macy__form--product">
       <h6 class="macy__h6">Quantity</h6>
-        {{#timesQuantity quantityMax}}
+        {{#each quantityChoices}}
           <label class="macy__checkmark--container">
-              <input type="radio" name="quantity" value={{this}}>
-              {{this}}
-              <span class="macy__form--checkmark"></span>
+            <input type="radio" name="quantity" value={{this}} {{#if @first}}checked{{/if}}>
+            {{this}}
+            <span class="macy__form--checkmark"></span>
           </label>
-        {{/timesQuantity}}
+        {{/each}}
     </form>
   </div>
 
