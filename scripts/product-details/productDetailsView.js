@@ -5,30 +5,31 @@ app.ProductDetailsView = Backbone.Marionette.View.extend({
   template: function(data) {
     return Handlebars.compile($('#productDetailsTemplate').html())(data);
   },
-  // initialize: function() {
-  //   app.EventBus.on('validAnalytics', this.validAnalytics, this);
-  //   app.EventBus.on('invalidProduct', this.invalidProduct, this);
-  // },
-  // validAnalytics: function() {
-  //   if (!this.$('.macy--incorrect').hasClass('hidden')) {
-  //     this.$('macy--incorrect').addClass('hidden');
-  //   }
-  // },
-  // invalidProduct() {
-  //   if (this.$('.macy--incorrect').hasClass('hidden')) {
-  //     this.$('.macy--incorrect').removeClass('hidden');
-  //   }
-  // },
-  // events: {
-  //   'click #next': 'showAddressView',
-  //   'click input': 'changeProductDetail'
-  // },
-  // showAddressView: function(event) {
-  //   event.preventDefault();
-  //   $('#next').addClass('hidden');
-  //   app.EventBus.trigger('showAddressView');
-  // },
-  // changeProductDetail: function(event) {
-  //   app.EventBus.trigger('changeProductDetail', {attr: event.target.name, value: event.target.value});
-  // },
+  initialize: function() {
+    this.listenTo(app.ValidChannel, 'valid:analytics', this.validAnalytics);
+    this.listenTo(app.ValidChannel, 'invalid:product', this.invalidProduct);
+  },
+  validAnalytics: function() {
+    if (!this.$('.macy--incorrect').hasClass('hidden')) {
+      this.$('macy--incorrect').addClass('hidden');
+    }
+  },
+  invalidProduct() {
+    if (this.$('.macy--incorrect').hasClass('hidden')) {
+      this.$('.macy--incorrect').removeClass('hidden');
+    }
+  },
+  events: {
+    'click #next': 'showAddressView',
+    'click input': 'changeProductDetail'
+  },
+  showAddressView: function(event) {
+    event.preventDefault();
+    $('#next').addClass('hidden');
+
+    app.NextChannel.trigger('show:address:view');
+  },
+  changeProductDetail: function(event) {
+    app.UpdateChannel.trigger('change:product:detail', {attr: event.target.name, value: event.target.value});
+  },
 });
