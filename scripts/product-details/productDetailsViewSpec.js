@@ -9,7 +9,7 @@ describe('Product details view', () => {
 
     productDetailsObject = {
       colorChoices: ['Blue','Green','Red'],
-      quantityMax: 5,
+      quantityChoices: 5,
       sizeChoices: [
         {value: '2S', text: 'Small'},
         {value: '3M', text: 'Medium'},
@@ -33,7 +33,7 @@ describe('Product details view', () => {
     });
 
     it('shows quantity choices equal to that entered in the model', () => {
-      expect($('input[name="quantity"]').length).toBe(productDetailsObject.quantityMax);
+      expect($('input[name="quantity"]').length).toBe(productDetailsObject.quantityChoices);
     });
 
     it('shows number of size choices entered in the model', () => {

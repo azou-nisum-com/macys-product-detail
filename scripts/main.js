@@ -2,7 +2,7 @@
 $(document).ready(function(){
   const productDetailsObj = {
     colorChoices: ['Blue','Green','Red'],
-    quantityMax: 5,
+    quantityChoices: [1, 2, 3, 4, 5],
     sizeChoices: [
       {value: '2S', text: 'Small'},
       {value: '3M', text: 'Medium'},
