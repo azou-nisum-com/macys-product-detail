@@ -62,7 +62,7 @@ describe('Address view', () => {
         };
 
         $input.val(expectedValue);
-        $input.trigger(jQuery.Event('keyup'));
+        $input.trigger(jQuery.Event('input'));
 
         expect(spy).toHaveBeenCalledWith(expectedData);
       });
