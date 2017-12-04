@@ -25,7 +25,7 @@ app.AddressView = Backbone.Marionette.View.extend({
     }
   },
   events: {
-    'keyup input': 'changeAddress',
+    'input input': 'changeAddress',
     'click #finish': 'showAnalyticsView'
   },
   changeAddress: function(event) {
